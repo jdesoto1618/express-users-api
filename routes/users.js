@@ -30,4 +30,25 @@ router.post("/", (req, res) => {
   res.send(`User ${newUser.firstName} was successfully added!`);
 });
 
+router.patch("/:id", (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastName, email, age } = req.body;
+  const userToUpdate = users.find((user) => user.id === id);
+
+  if (firstName) {
+    userToUpdate.firstName = firstName;
+  }
+  if (lastName) {
+    userToUpdate.lastName = lastName;
+  }
+  if (email) {
+    userToUpdate.email = email;
+  }
+  if (age) {
+    userToUpdate.age = age;
+  }
+
+  res.send(`User with the id ${id} has been updated!`);
+});
+
 export default router;
