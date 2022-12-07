@@ -42,9 +42,7 @@ export const patchUser = (req, res) => {
 export const deleteUser = (req, res) => {
   const { id } = req.params;
 
-  users = users.filter((user) => {
-    user.id !== id;
-  });
+  users = users.filter((user) => user.id !== id);
 
   res.send(`User with the id ${id} deleted successfully.`);
 };
