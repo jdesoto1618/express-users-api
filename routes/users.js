@@ -6,19 +6,24 @@ const users = [
     firstName: "Johnny",
     lastName: "Doe",
     Email: "johnd@email.com",
-    Age: "25",
+    Age: 25,
   },
   {
     firstName: "Jane",
     lastName: "Does",
     Email: "jane@email.com",
-    Age: "22",
+    Age: 22,
   },
 ];
 
 router.get("/", (req, res) => {
-  console.log(users);
-  res.send("Users route!");
+  res.send(users);
+});
+
+router.post("/", (req, res) => {
+  const newUser = req.body;
+  users.push({ ...newUser });
+  res.send(`User ${newUser.firstName} was successfully added!`);
 });
 
 export default router;
